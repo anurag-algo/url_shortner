@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+mongoose.connect("mongodb://127.0.0.1:27017/urlShortner").then(() => console.log("database connected")).catch((err) => console.log("database connection error " + err))
 const urlSchema = new mongoose.Schema({
     shortId: {
         type: String,
@@ -7,11 +7,11 @@ const urlSchema = new mongoose.Schema({
         unique: true
     },
     redirectUrl: {
-        trype: String,
+        type: String,
         required: true,
-    },
-},
+    }
+}
 )
 
-const URL = mongoose.model("url", urlSchema)
-export default URL
+const URLModel = mongoose.model("url", urlSchema)
+export default URLModel
